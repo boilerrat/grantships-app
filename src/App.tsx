@@ -1,26 +1,33 @@
 import {
   ChakraProvider,
   useColorMode,
-  Button as ChakraButton,
+  Switch,
   Box,
   Text,
   Flex,
   SimpleGrid,
-  Link,
+  Button as ChakraButton,
   extendTheme,
   ColorModeScript,
 } from "@chakra-ui/react";
 import { ConnectWallet } from "@thirdweb-dev/react";
 
-function ThemeToggleButton() {
+// Function to create the theme toggle switch
+function ThemeToggleSwitch() {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <ChakraButton onClick={toggleColorMode}>
-      Toggle {colorMode === "light" ? "Dark" : "Light"}
-    </ChakraButton>
+    <Flex align="center">
+      <Box mr="2">Toggle</Box>
+      <Switch
+        colorScheme="purple"
+        isChecked={colorMode === "dark"}
+        onChange={toggleColorMode}
+      />
+    </Flex>
   );
 }
 
+// Theme configuration for light and dark modes
 const theme = extendTheme({
   styles: {
     global: (props: { colorMode: "light" | "dark" }) => ({
@@ -32,26 +39,43 @@ const theme = extendTheme({
   },
 });
 
-export default function Home() {
+// Header component containing the theme toggle switch and wallet connect button
+function Header() {
   return (
-    <ChakraProvider theme={theme}>
-      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-      <Content />
-    </ChakraProvider>
+    <Flex
+      direction="row"
+      width="100%"
+      justify="space-between"
+      padding="4"
+      position="sticky"
+      top="0"
+      left="0"
+      right="0"
+      zIndex="1000"
+    >
+      <ThemeToggleSwitch />
+      <ConnectWallet
+        dropdownPosition={{
+          side: "bottom",
+          align: "center",
+        }}
+      />
+    </Flex>
   );
 }
 
+// Content component containing the main content of the page
 function Content() {
-  const { colorMode } = useColorMode(); // Get the current color mode
+  const { colorMode } = useColorMode();
   const cards = [
-    "DAO Dashboard",
-    "Referee Dashboard",
-    "Grant Ship 1",
-    "Grant Ship 2",
-    "Grant Ship 3",
-    "Grant Ship 4",
-    "Grant Ship 5",
-    "Grant Ship 6",
+    { title: "DAO Dashboard", content: "Gated Access for DAO Members" },
+    { title: "Referee Dashboard", content: "Gated Access for Referees" },
+    { title: "Grant Ship 1", content: "Gated Access for Grant Ship Team and Public Access" },
+    { title: "Grant Ship 2", content: "Gated Access for Grant Ship Team and Public Access" },
+    { title: "Grant Ship 3", content: "Gated Access for Grant Ship Team and Public Access" },
+    { title: "Grant Ship 4", content: "Gated Access for Grant Ship Team and Public Access" },
+    { title: "Grant Ship 5", content: "Gated Access for Grant Ship Team and Public Access" },
+    { title: "Grant Ship 6", content: "Gated Access for Grant Ship Team and Public Access" },
   ];
 
   return (
@@ -63,24 +87,6 @@ function Content() {
         minHeight="100vh"
         padding="4"
       >
-        <Flex
-          direction="row"
-          width="100%"
-          justify="space-between"
-          padding="4"
-          position="absolute"
-          top="0"
-          left="0"
-          right="0"
-        >
-          <ThemeToggleButton />
-          <ConnectWallet
-            dropdownPosition={{
-              side: "bottom",
-              align: "center",
-            }}
-          />
-        </Flex>
         <Box textAlign="center" marginBottom="4">
           <Box
             fontSize="6xl"
@@ -121,8 +127,8 @@ function Content() {
               border="0px"
               borderColor="white"
               borderRadius="lg"
-              backgroundColor={colorMode === "dark" ? "black" : "white"} // Set background based on color mode
-              color={colorMode === "dark" ? "white" : "black"} // Set text color based on color mode
+              backgroundColor={colorMode === "dark" ? "black" : "white"}
+              color={colorMode === "dark" ? "white" : "black"}
               onClick={() => window.open("https://dao-masons.gitbook.io/grant-ships-rule-book/")}
             >
               Rules
@@ -130,21 +136,21 @@ function Content() {
           </Box>
         </Box>
         <SimpleGrid columns={[1, 2, 4]} spacing="10" marginBottom="4">
-          {cards.map((title, index) => (
+          {cards.map((card, index) => (
             <Box
               key={index}
-              bg={colorMode === "dark" ? "black" : "white"} // Set background based on color mode
+              bg={colorMode === "dark" ? "black" : "white"}
               borderRadius="md"
               textAlign="center"
-              border="1px" // Set border thickness
-              borderColor={colorMode === "dark" ? "white" : "black"} // Set border color based on color mode
+              border="1px"
+              borderColor={colorMode === "dark" ? "white" : "black"}
               width="200px"
               height="250px"
             >
               <Box
                 padding="4"
                 borderRadius="md"
-                bg={colorMode === "dark" ? "black" : "white"} // Set inner box background based on color mode
+                bg={colorMode === "dark" ? "black" : "white"}
                 height="100%"
                 display="flex"
                 flexDirection="column"
@@ -154,23 +160,40 @@ function Content() {
                   fontFamily="'Cinzel Decorative', cursive"
                   fontSize="xl"
                   fontWeight="bold"
-                  color={colorMode === "dark" ? "white" : "black"} // Set title text color based on color mode
+                  color={colorMode === "dark" ? "white" : "black"}
                 >
-                  {title}
+                  {card.title}
                 </Text>
-                <Text fontSize="sm" marginTop="2" color={colorMode === "dark" ? "white" : "black"}> // Set Lorem Ipsum text color based on color mode
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                <Text fontSize="sm" marginTop="2" color={colorMode === "dark" ? "white" : "black"}>
+                  {card.content}
                 </Text>
-                <Link href="#" marginTop="4">
+                {card.title.startsWith("Grant Ship") && (
+                  <ChakraButton size="sm" colorScheme="purple" marginTop="2">
+                    Public Access
+                  </ChakraButton>
+                )}
+                <a href="#" style={{ marginTop: "4" }}>
                   <ChakraButton size="sm" colorScheme="purple">
                     Dashboard
                   </ChakraButton>
-                </Link>
+                </a>
               </Box>
             </Box>
           ))}
         </SimpleGrid>
       </Flex>
     </main>
+  );
+}
+
+
+// Main Home component
+export default function Home() {
+  return (
+    <ChakraProvider theme={theme}>
+      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+      <Header />
+      <Content />
+    </ChakraProvider>
   );
 }
