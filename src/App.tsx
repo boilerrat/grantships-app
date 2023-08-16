@@ -11,15 +11,18 @@ import {
   ColorModeScript,
 } from "@chakra-ui/react";
 import { ConnectWallet } from "@thirdweb-dev/react";
+import Icon from '@mdi/react';
+import { mdiShipWheel } from '@mdi/js';
+
 
 // Function to create the theme toggle switch
 function ThemeToggleSwitch() {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Flex align="center">
-      <Box mr="2">Toggle</Box>
       <Switch
-        colorScheme="purple"
+      size="lg"
+        colorScheme="blue"
         isChecked={colorMode === "dark"}
         onChange={toggleColorMode}
       />
@@ -68,14 +71,14 @@ function Header() {
 function Content() {
   const { colorMode } = useColorMode();
   const cards = [
-    { title: "DAO Dashboard", content: "Gated Access for DAO Members" },
-    { title: "Referee Dashboard", content: "Gated Access for Referees" },
-    { title: "Grant Ship 1", content: "Gated Access for Grant Ship Team and Public Access" },
-    { title: "Grant Ship 2", content: "Gated Access for Grant Ship Team and Public Access" },
-    { title: "Grant Ship 3", content: "Gated Access for Grant Ship Team and Public Access" },
-    { title: "Grant Ship 4", content: "Gated Access for Grant Ship Team and Public Access" },
-    { title: "Grant Ship 5", content: "Gated Access for Grant Ship Team and Public Access" },
-    { title: "Grant Ship 6", content: "Gated Access for Grant Ship Team and Public Access" },
+    { title: "DAO", content: "DAO Dashboard" },
+    { title: "Referee", content: "Referee Dashboard" },
+    { title: "Grant Ship 1", content: "Grant Ship 1 Dashboard" },
+    { title: "Grant Ship 2", content: "Grant Ship 2 Dashboard" },
+    { title: "Grant Ship 3", content: "Grant Ship 3 Dashboard" },
+    { title: "Grant Ship 4", content: "Grant Ship 4 Dashboard" },
+    { title: "Grant Ship 5", content: "Grant Ship 5 Dashboard" },
+    { title: "Grant Ship 6", content: "Grant Ship 6 Dashboard" },
   ];
 
   return (
@@ -97,7 +100,7 @@ function Content() {
             Welcome to{" "}
             <Box
               as="span"
-              bgGradient="linear(to-l, #7928CA, #FF0080)"
+              bgGradient="linear(#213147, #12AAFF, #213147)"
               bgClip="text"
               paddingTop="0.1em"
             >
@@ -111,7 +114,7 @@ function Content() {
             display="flex"
             alignItems="center"
             justifyContent="center"
-            bgGradient="linear(to-l, #7928CA, #FF0080)"
+            bgGradient="linear(#213147, #12AAFF, #213147)"
             borderRadius="sm"
             padding="1px"
             width="208px"
@@ -136,51 +139,49 @@ function Content() {
           </Box>
         </Box>
         <SimpleGrid columns={[1, 2, 4]} spacing="10" marginBottom="4">
-          {cards.map((card, index) => (
-            <Box
-              key={index}
-              bg={colorMode === "dark" ? "black" : "white"}
-              borderRadius="md"
-              textAlign="center"
-              border="1px"
-              borderColor={colorMode === "dark" ? "white" : "black"}
-              width="200px"
-              height="250px"
-            >
-              <Box
-                padding="4"
-                borderRadius="md"
-                bg={colorMode === "dark" ? "black" : "white"}
-                height="100%"
-                display="flex"
-                flexDirection="column"
-                justifyContent="space-between"
-              >
-                <Text
-                  fontFamily="'Cinzel Decorative', cursive"
-                  fontSize="xl"
-                  fontWeight="bold"
-                  color={colorMode === "dark" ? "white" : "black"}
-                >
-                  {card.title}
-                </Text>
-                <Text fontSize="sm" marginTop="2" color={colorMode === "dark" ? "white" : "black"}>
-                  {card.content}
-                </Text>
-                {card.title.startsWith("Grant Ship") && (
-                  <ChakraButton size="sm" colorScheme="purple" marginTop="2">
-                    Public Access
-                  </ChakraButton>
-                )}
-                <a href="#" style={{ marginTop: "4" }}>
-                  <ChakraButton size="sm" colorScheme="purple">
-                    Dashboard
-                  </ChakraButton>
-                </a>
-              </Box>
-            </Box>
-          ))}
-        </SimpleGrid>
+  {cards.map((card, index) => (
+    <Box
+      key={index}
+      bg={colorMode === "dark" ? "black" : "white"}
+      borderRadius="md"
+      textAlign="center"
+      border="1px"
+      borderColor={colorMode === "dark" ? "white" : "black"}
+      width="200px"
+      height="250px"
+    >
+      <Box
+        padding="4"
+        borderRadius="md"
+        bg={colorMode === "dark" ? "black" : "white"}
+        height="100%"
+        display="flex"
+        flexDirection="column"
+        justifyContent="space-between"
+      >
+        <Text
+          fontFamily="'Cinzel Decorative', cursive"
+          fontSize="xl"
+          fontWeight="bold"
+          color={colorMode === "dark" ? "white" : "black"}
+        >
+          {card.title}
+        </Text>
+        <Text fontSize="sm" marginTop="2" color={colorMode === "dark" ? "white" : "black"}>
+          {card.content}
+        </Text>
+        <ChakraButton
+          size="md"
+          width="100%"
+          bg="#12AAFF" // Set the initial background color
+          _hover={{ bg: "#213147", color: "white" }} // Set the hover background color and text color
+        >
+          <Icon path={mdiShipWheel} size={1} color="white" /> Enter
+        </ChakraButton>
+      </Box>
+    </Box>
+  ))}
+</SimpleGrid>
       </Flex>
     </main>
   );
