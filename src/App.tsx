@@ -17,8 +17,8 @@ function ThemeToggleSwitch() {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Flex align="center">
-      <Box mr="2">Toggle</Box>
       <Switch
+      size="lg"
         colorScheme="blue"
         isChecked={colorMode === "dark"}
         onChange={toggleColorMode}
