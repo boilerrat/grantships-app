@@ -11,6 +11,9 @@ import {
   ColorModeScript,
 } from "@chakra-ui/react";
 import { ConnectWallet } from "@thirdweb-dev/react";
+import Icon from '@mdi/react';
+import { mdiShipWheel } from '@mdi/js';
+
 
 // Function to create the theme toggle switch
 function ThemeToggleSwitch() {
@@ -136,58 +139,49 @@ function Content() {
           </Box>
         </Box>
         <SimpleGrid columns={[1, 2, 4]} spacing="10" marginBottom="4">
-        {cards.map((card, index) => (
-          <Box
-            key={index}
-            bg={colorMode === "dark" ? "black" : "white"}
-            borderRadius="md"
-            textAlign="center"
-            border="1px"
-            borderColor={colorMode === "dark" ? "white" : "black"}
-            width="200px"
-            height="250px"
-          >
-            <Box
-              padding="4"
-              borderRadius="md"
-              bg={colorMode === "dark" ? "black" : "white"}
-              height="100%"
-              display="flex"
-              flexDirection="column"
-              justifyContent="space-between"
-            >
-              <Text
-                fontFamily="'Cinzel Decorative', cursive"
-                fontSize="xl"
-                fontWeight="bold"
-                color={colorMode === "dark" ? "white" : "black"}
-              >
-                {card.title}
-              </Text>
-              <Text fontSize="sm" marginTop="2" color={colorMode === "dark" ? "white" : "black"}>
-                {card.content}
-              </Text>
-              <ChakraButton
-                size="md"
-                width="100%"
-                bg="#12AAFF" // Set the initial background color
-                _hover={{ bg: "#213147", color: "white" }} // Set the hover background color and text color
-              >
-                Public
-              </ChakraButton>
-              <ChakraButton
-                size="md"
-                width="100%"
-                marginTop="2"
-                bg="#12AAFF" // Set the initial background color
-                _hover={{ bg: "#213147", color: "white" }} // Set the hover background color and text color
-              >
-                Gated
-              </ChakraButton>
-            </Box>
-          </Box>
-        ))}
-      </SimpleGrid>
+  {cards.map((card, index) => (
+    <Box
+      key={index}
+      bg={colorMode === "dark" ? "black" : "white"}
+      borderRadius="md"
+      textAlign="center"
+      border="1px"
+      borderColor={colorMode === "dark" ? "white" : "black"}
+      width="200px"
+      height="250px"
+    >
+      <Box
+        padding="4"
+        borderRadius="md"
+        bg={colorMode === "dark" ? "black" : "white"}
+        height="100%"
+        display="flex"
+        flexDirection="column"
+        justifyContent="space-between"
+      >
+        <Text
+          fontFamily="'Cinzel Decorative', cursive"
+          fontSize="xl"
+          fontWeight="bold"
+          color={colorMode === "dark" ? "white" : "black"}
+        >
+          {card.title}
+        </Text>
+        <Text fontSize="sm" marginTop="2" color={colorMode === "dark" ? "white" : "black"}>
+          {card.content}
+        </Text>
+        <ChakraButton
+          size="md"
+          width="100%"
+          bg="#12AAFF" // Set the initial background color
+          _hover={{ bg: "#213147", color: "white" }} // Set the hover background color and text color
+        >
+          <Icon path={mdiShipWheel} size={1} color="white" /> Enter
+        </ChakraButton>
+      </Box>
+    </Box>
+  ))}
+</SimpleGrid>
       </Flex>
     </main>
   );
