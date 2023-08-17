@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { ConnectWallet } from "@thirdweb-dev/react";
 import { MdLightbulb } from 'react-icons/md';
-import { GiShoonerSailboat, GiBoatHorizon, GiWhistle, GiShipWheel, GiWhaleTail, GiCastle, GiAnchor, GiBoatPropeller } from "react-icons/gi";
+import { GiShoonerSailboat, GiBoatHorizon, GiWhistle, GiShipWheel, GiWhaleTail, GiCastle, GiAnchor, GiBoatPropeller, GiWoodCanoe } from "react-icons/gi";
 import DAODash from './pages/daoDash';
 import RefDash from './pages/refDash';
 import GS1Dash from './pages/GS1Dash';
@@ -104,32 +104,37 @@ const cards = [
 ];
 
 
-  return (
-    <main>
-      <Flex
-        direction="column"
-        align="center"
-        justify="center"
-        minHeight="100vh"
-        padding="4"
-      >
-        <Box textAlign="center" marginBottom="4">
+return (
+  <main>
+    <Flex
+      direction="column"
+      align="center"
+      justify="center"
+      minHeight="100vh"
+      padding="4"
+    >
+      {/* Flex container to center the GiWoodCanoe icon both horizontally and vertically */}
+      <Flex justifyContent="center" alignItems="center" width="100%">
+        <GiWoodCanoe size={100} color={colorMode === "dark" ? "white" : "black"} /> {/* Logo with theme properties */}
+      </Flex>
+      <Box textAlign="center" marginBottom="4">
+        {/* Heading */}
+        <Box
+          fontSize="6xl"
+          fontWeight="extrabold"
+          lineHeight="1.2"
+          fontFamily="'Cinzel Decorative', cursive"
+        >
+          Welcome to{" "}
           <Box
-            fontSize="6xl"
-            fontWeight="extrabold"
-            lineHeight="1.2"
-            fontFamily="'Cinzel Decorative', cursive"
+            as="span"
+            bgGradient="linear(#213147, #12AAFF, #213147)"
+            bgClip="text"
+            paddingTop="0.1em"
           >
-            Welcome to{" "}
-            <Box
-              as="span"
-              bgGradient="linear(#213147, #12AAFF, #213147)"
-              bgClip="text"
-              paddingTop="0.1em"
-            >
-              Grant Ships
-            </Box>
+            Grant Ships
           </Box>
+        </Box>
           <Text fontSize="xl" fontWeight="bold" marginTop="2">
             An Evolutionary Grants Game
           </Text>
