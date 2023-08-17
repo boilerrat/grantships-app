@@ -1,10 +1,12 @@
 import React from 'react';
-import CommonComponent from './CommonComponent';
+import ComingSoon from './CommonComponent';
+import { GiWhistle } from "react-icons/gi"; // Import the GiCastle icon
 
-const refDash = () => {
+const DAODash = () => {
   return (
-    <CommonComponent />
+    // Pass the GiCastle icon as the IconComponent prop to ComingSoon
+    <ComingSoon IconComponent={GiWhistle} />
   );
 };
 
-export default refDash;
+export default DAODash;

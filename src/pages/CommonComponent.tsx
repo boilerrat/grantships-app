@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { Box, Button as ChakraButton } from "@chakra-ui/react";
+import { Box, Button as ChakraButton, useColorMode, Flex } from "@chakra-ui/react";
 import { useNavigate } from 'react-router-dom';
 
-const ComingSoon: React.FC = () => {
-  // Sample quotes for demonstration purposes
+// Define the ComingSoon component, accepting an IconComponent as a prop
+const ComingSoon: React.FC<{ IconComponent: React.ElementType }> = ({ IconComponent }) => {
+  // Hook to get the current color mode (dark or light)
+  const { colorMode } = useColorMode();
+
   const quotes = [
     "A smooth sea never made a skilled sailor.- Franklin D. Roosevelt",
     "The pessimist complains about the wind; the optimist expects it to change; the realist adjusts the sails.- William Arthur Ward",
@@ -17,67 +20,76 @@ const ComingSoon: React.FC = () => {
     "Indecision may or may not be my problem. - Jimmy Buffett (Singer, sailor, and author of 'A Pirate Looks at Fifty')",
   ];
 
-  // State to manage the current quote index
-  const [quoteIndex, setQuoteIndex] = useState(0);
+   // State to manage the current quote index, initialized to 0
+   const [quoteIndex, setQuoteIndex] = useState(0);
 
-  // Function to switch to the next quote
-  const nextQuote = () => {
-    setQuoteIndex((prevIndex) => (prevIndex + 1) % quotes.length);
-  };
-
-  // useNavigate hook to navigate back to the homepage
-  const navigate = useNavigate();
-
-  // function to navigate back to the homepage
-  const goHome = () => {
-    navigate('/');
-  };
-
-  return (
-    <Box
-      textAlign="center"
-      padding="4"
-      minHeight="100vh"
-      display="flex"
-      flexDirection="column"
-      justifyContent="center"
-      alignItems="center"
-    >
-      <Box
-        fontSize="6xl"
-        fontWeight="extrabold"
-        lineHeight="1.2"
-        fontFamily="'Cinzel Decorative', cursive"
-        bgGradient="linear(#213147, #12AAFF, #213147)"
-        bgClip="text"
-      >
-        ...Coming Soon
-      </Box>
-      <Box fontSize="xl" fontWeight="bold" marginTop="2">
-        {quotes[quoteIndex]}
-      </Box>
-      <ChakraButton
-        size="lg"
-        height="48px"
-        width="200px"
-        borderRadius="lg"
-        marginTop="4"
-        onClick={nextQuote}
-      >
-        Next Quote
-      </ChakraButton>
-      <ChakraButton
-        size="lg"
-        height="48px"
-        width="200px"
-        borderRadius="lg"
-        marginTop="4"
-        onClick={goHome}
-      >
-        Return Home
-      </ChakraButton>
-    </Box>
-  );
-};
-
-export default ComingSoon
+   // Function to switch to the next quote, cycling back to the beginning if at the end
+   const nextQuote = () => {
+     setQuoteIndex((prevIndex) => (prevIndex + 1) % quotes.length);
+   };
+ 
+   // useNavigate hook to navigate back to the homepage
+   const navigate = useNavigate();
+ 
+   // Function to navigate back to the homepage
+   const goHome = () => {
+     navigate('/');
+   };
+ 
+   return (
+     <Box
+       textAlign="center"
+       padding="4"
+       minHeight="100vh"
+       display="flex"
+       flexDirection="column"
+       justifyContent="center"
+       alignItems="center"
+     >
+       {/* Flex container to center the IconComponent */}
+       <Flex justifyContent="center" alignItems="center" marginBottom="8">
+         {/* Render the IconComponent with size 175 and color based on theme */}
+         <IconComponent size={175} color={colorMode === "dark" ? "white" : "black"} />
+       </Flex>
+       {/* Heading with gradient text effect */}
+       <Box
+         fontSize="6xl"
+         fontWeight="extrabold"
+         lineHeight="1.2"
+         fontFamily="'Cinzel Decorative', cursive"
+         bgGradient="linear(#213147, #12AAFF, #213147)"
+         bgClip="text"
+       >
+         ...Coming Soon
+       </Box>
+       {/* Display the current quote */}
+       <Box fontSize="xl" fontWeight="bold" marginTop="2">
+         {quotes[quoteIndex]}
+       </Box>
+       {/* Button to switch to the next quote */}
+       <ChakraButton
+         size="lg"
+         height="48px"
+         width="200px"
+         borderRadius="lg"
+         marginTop="4"
+         onClick={nextQuote}
+       >
+         Next Quote
+       </ChakraButton>
+       {/* Button to navigate back to the homepage */}
+       <ChakraButton
+         size="lg"
+         height="48px"
+         width="200px"
+         borderRadius="lg"
+         marginTop="4"
+         onClick={goHome}
+       >
+         Return Home
+       </ChakraButton>
+     </Box>
+   );
+ };
+ 
+ export default ComingSoon;
