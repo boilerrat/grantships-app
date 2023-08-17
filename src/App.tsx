@@ -94,13 +94,13 @@ function Content() {
 
 const cards = [
   { title: "DAO", icon: <GiCastle size={50} color={colorMode === "dark" ? "white" : "black"} /> },
-  { title: "Referee Dashboard", icon: <GiWhistle size={50} color={colorMode === "dark" ? "white" : "black"} /> },
-  { title: "Grant Ship 1", icon: <GiAnchor size={50} color={colorMode === "dark" ? "white" : "black"} /> },
-  { title: "Grant Ship 2", icon: <GiBoatPropeller size={50} color={colorMode === "dark" ? "white" : "black"} /> },
-  { title: "Grant Ship 3", icon: <GiShoonerSailboat size={50} color={colorMode === "dark" ? "white" : "black"} /> },
-  { title: "Grant Ship 4", icon: <GiBoatHorizon size={50} color={colorMode === "dark" ? "white" : "black"} /> },
-  { title: "Grant Ship 5", icon: <GiShipWheel size={50} color={colorMode === "dark" ? "white" : "black"} /> },
-  { title: "Grant Ship 6", icon: <GiWhaleTail size={50} color={colorMode === "dark" ? "white" : "black"} /> },
+  { title: "Referees", icon: <GiWhistle size={50} color={colorMode === "dark" ? "white" : "black"} /> },
+  { title: "Anchors", icon: <GiAnchor size={50} color={colorMode === "dark" ? "white" : "black"} /> },
+  { title: "Props", icon: <GiBoatPropeller size={50} color={colorMode === "dark" ? "white" : "black"} /> },
+  { title: "Schooners", icon: <GiShoonerSailboat size={50} color={colorMode === "dark" ? "white" : "black"} /> },
+  { title: "Yachty's", icon: <GiBoatHorizon size={50} color={colorMode === "dark" ? "white" : "black"} /> },
+  { title: "Navigators", icon: <GiShipWheel size={50} color={colorMode === "dark" ? "white" : "black"} /> },
+  { title: "Whales", icon: <GiWhaleTail size={50} color={colorMode === "dark" ? "white" : "black"} /> },
 ];
 
 
@@ -114,8 +114,8 @@ return (
       padding="4"
     >
       {/* Flex container to center the GiWoodCanoe icon both horizontally and vertically */}
-      <Flex justifyContent="center" alignItems="center" width="100%">
-        <GiWoodCanoe size={100} color={colorMode === "dark" ? "white" : "black"} /> {/* Logo with theme properties */}
+      <Flex justifyContent="center" alignItems="center" width="100%" marginBottom="6">
+        <GiWoodCanoe size={175} color={colorMode === "dark" ? "white" : "black"} /> {/* Logo with theme properties */}
       </Flex>
       <Box textAlign="center" marginBottom="4">
         {/* Heading */}
