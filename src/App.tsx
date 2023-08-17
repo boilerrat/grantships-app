@@ -79,13 +79,13 @@ function Content() {
   const navigateToDashboard = (title: string) => {
     const paths: Record<string, string> = {
       "DAO": "/daoDash",
-      "Referee Dashboard": "/refDash",
-      "Grant Ship 1": "/GS1Dash",
-      "Grant Ship 2": "/GS2Dash",
-      "Grant Ship 3": "/GS3Dash",
-      "Grant Ship 4": "/GS4Dash",
-      "Grant Ship 5": "/GS5Dash",
-      "Grant Ship 6": "/GS6Dash",
+      "Referees": "/refDash",
+      "Anchors": "/GS1Dash",
+      "Props": "/GS2Dash",
+      "Schooners": "/GS3Dash",
+      "Yachty's": "/GS4Dash",
+      "Navigators": "/GS5Dash",
+      "Whales": "/GS6Dash",
     };
     navigate(paths[title]);
   };
