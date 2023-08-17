@@ -1,4 +1,5 @@
-// Importing necessary components and icons
+// Importing necessary components, icons, and react-helmet for Open Graph metadata
+import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import {
@@ -30,6 +31,7 @@ import GS4Dash from './pages/GS4Dash';
 import GS5Dash from './pages/GS5Dash';
 import GS6Dash from './pages/GS6Dash';
 
+// Theme toggle switch component
 function ThemeToggleSwitch() {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
@@ -44,6 +46,7 @@ function ThemeToggleSwitch() {
   );
 }
 
+// Theme configuration
 const theme = extendTheme({
   styles: {
     global: (props: { colorMode: "light" | "dark" }) => ({
@@ -55,6 +58,7 @@ const theme = extendTheme({
   },
 });
 
+// Header component
 function Header() {
   return (
     <Flex
@@ -79,6 +83,7 @@ function Header() {
   );
 }
 
+// Content component
 function Content() {
   const navigate = useNavigate();
   const navigateToDashboard = (title: string) => {
@@ -248,6 +253,13 @@ export default function Home() {
     <ChakraProvider theme={theme}>
       <ColorModeScript initialColorMode={theme.config.initialColorMode} />
       <Router>
+        <Helmet>
+          <meta property="og:title" content="Grant Ships" />
+          <meta property="og:description" content="An Evolutionary Grants Game" />
+          <meta property="og:url" content="https://www.grantships.fun" />
+          <meta property="og:image" content={dmlogo} />
+          <meta property="og:type" content="website" />
+        </Helmet>
         <Header />
         <Routes>
           <Route path="/" element={<Content />} />
