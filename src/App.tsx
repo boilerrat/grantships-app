@@ -12,10 +12,15 @@ import {
   Button as ChakraButton,
   extendTheme,
   ColorModeScript,
+  Image,
+  Spacer,
 } from "@chakra-ui/react";
 import { ConnectWallet } from "@thirdweb-dev/react";
-import { MdLightbulb } from 'react-icons/md';
-import { GiShoonerSailboat, GiBoatHorizon, GiWhistle, GiShipWheel, GiWhaleTail, GiCastle, GiAnchor, GiBoatPropeller, GiWoodCanoe } from "react-icons/gi";
+import { MdLightbulb, MdCopyright } from 'react-icons/md';
+import { GiShoonerSailboat, GiBoatHorizon, GiWhistle, GiShipWheel, GiWhaleTail, GiLighthouse, GiAnchor, GiBoatPropeller, GiWoodCanoe } from "react-icons/gi";
+
+import dmlogo from './dmlogo.svg';
+
 import DAODash from './pages/daoDash';
 import RefDash from './pages/refDash';
 import GS1Dash from './pages/GS1Dash';
@@ -93,7 +98,7 @@ function Content() {
   const { colorMode } = useColorMode();
 
 const cards = [
-  { title: "DAO", icon: <GiCastle size={50} color={colorMode === "dark" ? "white" : "black"} /> },
+  { title: "DAO", icon: <GiLighthouse size={50} color={colorMode === "dark" ? "white" : "black"} /> },
   { title: "Referees", icon: <GiWhistle size={50} color={colorMode === "dark" ? "white" : "black"} /> },
   { title: "Anchors", icon: <GiAnchor size={50} color={colorMode === "dark" ? "white" : "black"} /> },
   { title: "Props", icon: <GiBoatPropeller size={50} color={colorMode === "dark" ? "white" : "black"} /> },
@@ -117,13 +122,14 @@ return (
       <Flex justifyContent="center" alignItems="center" width="100%" marginBottom="6">
         <GiWoodCanoe size={175} color={colorMode === "dark" ? "white" : "black"} /> {/* Logo with theme properties */}
       </Flex>
-      <Box textAlign="center" marginBottom="4">
+      <Box textAlign="center" marginBottom="0">
         {/* Heading */}
         <Box
           fontSize="6xl"
           fontWeight="extrabold"
           lineHeight="1.2"
           fontFamily="'Cinzel Decorative', cursive"
+          marginBottom="10"
         >
           Welcome to{" "}
           <Box
@@ -147,7 +153,8 @@ return (
             padding="1px"
             width="202px"
             height="auto"
-            marginTop="4"
+            marginTop="2"
+            marginBottom ="20"
             marginLeft="auto"
             marginRight="auto"
           >
@@ -167,68 +174,68 @@ return (
           </Box>
         </Box>
         <SimpleGrid columns={[1, 2, 4]} spacing="10" marginBottom="4">
-        {cards.map((card, index) => (
-  <Box
-    key={index}
-    bg={colorMode === "dark" ? "black" : "white"}
-    borderRadius="md"
-    textAlign="center"
-    border="1px"
-    borderColor={colorMode === "dark" ? "white" : "black"}
-    width="200px"
-    height="250px"
-  >
-    <Box
-      padding="4"
-      borderRadius="md"
-      bg={colorMode === "dark" ? "black" : "white"}
-      height="100%"
-      display="flex"
-      flexDirection="column"
-      justifyContent="space-between"
-    >
-      <Text
-        fontFamily="'Cinzel Decorative', cursive"
-        fontSize="xl"
-        fontWeight="bold"
-        bgGradient="linear(#213147, #12AAFF, #213147)"
-        bgClip="text"
-      >
-        {card.title}
-      </Text>
-      <Box display="flex" justifyContent="center" alignItems="center">
-        {card.icon} 
-      </Box>
-      <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        bgGradient="linear(#213147, #12AAFF, #213147)"
-        borderRadius="lg"
-        padding="1px"
-        width="auto"
-        height="auto"
-        marginTop="4"
-        marginLeft="auto"
-        marginRight="auto"
-      >
-        <ChakraButton
-          size="lg"
-          height="48px"
-          width="150px"
-          border="0px"
-          borderColor="white"
-          borderRadius="lg"
-          backgroundColor={colorMode === "dark" ? "black" : "white"}
-          color={colorMode === "dark" ? "white" : "black"}
-          onClick={() => navigateToDashboard(card.title)}
+              {cards.map((card, index) => (
+        <Box
+          key={index}
+          bg={colorMode === "dark" ? "black" : "white"}
+          borderRadius="md"
+          textAlign="center"
+          border="1px"
+          borderColor={colorMode === "dark" ? "white" : "black"}
+          width="200px"
+          height="250px"
         >
-          Enter
-        </ChakraButton>
-      </Box>
-    </Box>
-  </Box>
-))}
+          <Box
+            padding="4"
+            borderRadius="md"
+            bg={colorMode === "dark" ? "black" : "white"}
+            height="100%"
+            display="flex"
+            flexDirection="column"
+            justifyContent="space-between"
+          >
+            <Text
+              fontFamily="'Cinzel Decorative', cursive"
+              fontSize="xl"
+              fontWeight="bold"
+              bgGradient="linear(#213147, #12AAFF, #213147)"
+              bgClip="text"
+            >
+              {card.title}
+            </Text>
+            <Box display="flex" justifyContent="center" alignItems="center">
+              {card.icon} 
+            </Box>
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              bgGradient="linear(#213147, #12AAFF, #213147)"
+              borderRadius="lg"
+              padding="1px"
+              width="auto"
+              height="auto"
+              marginTop="4"
+              marginLeft="auto"
+              marginRight="auto"
+            >
+              <ChakraButton
+                size="lg"
+                height="48px"
+                width="150px"
+                border="0px"
+                borderColor="white"
+                borderRadius="lg"
+                backgroundColor={colorMode === "dark" ? "black" : "white"}
+                color={colorMode === "dark" ? "white" : "black"}
+                onClick={() => navigateToDashboard(card.title)}
+               >
+                 Enter
+               </ChakraButton>
+             </Box>
+            </Box>
+          </Box>
+        ))}
 
         </SimpleGrid>
       </Flex>
@@ -253,7 +260,44 @@ export default function Home() {
           <Route path="/GS5Dash" element={<GS5Dash />} />
           <Route path="/GS6Dash" element={<GS6Dash />} />
         </Routes>
+        <Footer />
       </Router>
     </ChakraProvider>
   );
 }
+
+function Footer() {
+  const { colorMode } = useColorMode();
+  const bgColor = colorMode === "dark" ? "white" : "black";
+  const textColor = colorMode === "dark" ? "black" : "white";
+
+  return (
+    <Flex
+      direction="row"
+      justify="space-between"
+      align="center"
+      padding="0" // Reduced padding
+      bg={bgColor}
+      color={textColor}
+      width="100%"
+    >
+      {/* Empty Flex to keep space on the left */}
+      <Flex align="center"></Flex>
+      <Flex align="center" marginRight="6"> {/* Adjusted marginRight */}
+        <MdCopyright size={16} color={textColor} />
+        <Text fontSize="sm" marginRight="2" color={textColor}>
+          Copyright 2023
+        </Text>
+        <Image
+          src={dmlogo}
+          alt="DAO Masons Logo"
+          width="40px"
+          height="40px"
+          filter={colorMode === "dark" ? "invert(0%)" : "invert(100%)"}
+          marginLeft="0"
+        />
+      </Flex>
+    </Flex>
+  );
+}
+
