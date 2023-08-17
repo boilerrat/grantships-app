@@ -68,8 +68,8 @@ function Header() {
 function Content() {
   const { colorMode } = useColorMode();
   const cards = [
-    { title: "DAO Dashboard", content: "Gated Access for DAO Members" },
-    { title: "Referee Dashboard", content: "Gated Access for Referees" },
+    { title: "DAO", content: "Info for DAO Members about the Overall Grant Program and Voting" },
+    { title: "Referee Dashboard", content: "Referee Dashboard for Referee Actions and Information" },
     { title: "Grant Ship 1", content: "Gated Access for Grant Ship Team and Public Access" },
     { title: "Grant Ship 2", content: "Gated Access for Grant Ship Team and Public Access" },
     { title: "Grant Ship 3", content: "Gated Access for Grant Ship Team and Public Access" },
@@ -112,7 +112,7 @@ function Content() {
             alignItems="center"
             justifyContent="center"
             bgGradient="linear(to-l, #7928CA, #FF0080)"
-            borderRadius="sm"
+            borderRadius="lg"
             padding="1px"
             width="208px"
             height="56px"
@@ -136,51 +136,46 @@ function Content() {
           </Box>
         </Box>
         <SimpleGrid columns={[1, 2, 4]} spacing="10" marginBottom="4">
-          {cards.map((card, index) => (
+        {cards.map((card, index) => (
+          <Box
+            key={index}
+            bg={colorMode === "dark" ? "black" : "white"}
+            borderRadius="md"
+            textAlign="center"
+            border="1px"
+            borderColor={colorMode === "dark" ? "white" : "black"}
+            width="200px"
+            height="250px"
+          >
             <Box
-              key={index}
-              bg={colorMode === "dark" ? "black" : "white"}
+              padding="4"
               borderRadius="md"
-              textAlign="center"
-              border="1px"
-              borderColor={colorMode === "dark" ? "white" : "black"}
-              width="200px"
-              height="250px"
+              bg={colorMode === "dark" ? "black" : "white"}
+              height="100%"
+              display="flex"
+              flexDirection="column"
+              justifyContent="space-between"
             >
-              <Box
-                padding="4"
-                borderRadius="md"
-                bg={colorMode === "dark" ? "black" : "white"}
-                height="100%"
-                display="flex"
-                flexDirection="column"
-                justifyContent="space-between"
+              <Text
+                fontFamily="'Cinzel Decorative', cursive"
+                fontSize="xl"
+                fontWeight="bold"
+                color={colorMode === "dark" ? "white" : "black"}
               >
-                <Text
-                  fontFamily="'Cinzel Decorative', cursive"
-                  fontSize="xl"
-                  fontWeight="bold"
-                  color={colorMode === "dark" ? "white" : "black"}
-                >
-                  {card.title}
-                </Text>
-                <Text fontSize="sm" marginTop="2" color={colorMode === "dark" ? "white" : "black"}>
-                  {card.content}
-                </Text>
-                {card.title.startsWith("Grant Ship") && (
-                  <ChakraButton size="sm" colorScheme="purple" marginTop="2">
-                    Public Access
-                  </ChakraButton>
-                )}
-                <a href="#" style={{ marginTop: "4" }}>
-                  <ChakraButton size="sm" colorScheme="purple">
-                    Dashboard
-                  </ChakraButton>
-                </a>
-              </Box>
+                {card.title}
+              </Text>
+              <Text fontSize="sm" marginTop="2" color={colorMode === "dark" ? "white" : "black"}>
+                {card.content}
+              </Text>
+              <a href="#" style={{ marginTop: "4" }}>
+                <ChakraButton size="sm" colorScheme="purple">
+                  Enter Dashboard
+                </ChakraButton>
+              </a>
             </Box>
-          ))}
-        </SimpleGrid>
+          </Box>
+        ))}
+      </SimpleGrid>
       </Flex>
     </main>
   );
