@@ -11,15 +11,16 @@ import {
   ColorModeScript,
 } from "@chakra-ui/react";
 import { ConnectWallet } from "@thirdweb-dev/react";
+import { MdLightbulb } from 'react-icons/md';
 
 // Function to create the theme toggle switch
 function ThemeToggleSwitch() {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Flex align="center">
-      <Box mr="2">Toggle</Box>
+      <MdLightbulb size={24} style={{ marginRight: '10px', color: colorMode === "dark" ? "white" : "black" }} />
       <Switch
-        colorScheme="purple"
+        colorScheme="blue"
         isChecked={colorMode === "dark"}
         onChange={toggleColorMode}
       />
@@ -97,7 +98,7 @@ function Content() {
             Welcome to{" "}
             <Box
               as="span"
-              bgGradient="linear(to-l, #7928CA, #FF0080)"
+              bgGradient="linear(#213147, #12AAFF, #213147)"
               bgClip="text"
               paddingTop="0.1em"
             >
@@ -111,12 +112,12 @@ function Content() {
             display="flex"
             alignItems="center"
             justifyContent="center"
-            bgGradient="linear(to-l, #7928CA, #FF0080)"
+            bgGradient="linear(#213147, #12AAFF, #213147)"
             borderRadius="lg"
             padding="1px"
-            width="208px"
-            height="56px"
-            marginTop="10"
+            width="202px"
+            height="auto"
+            marginTop="4"
             marginLeft="auto"
             marginRight="auto"
           >
@@ -136,46 +137,70 @@ function Content() {
           </Box>
         </Box>
         <SimpleGrid columns={[1, 2, 4]} spacing="10" marginBottom="4">
-        {cards.map((card, index) => (
-          <Box
-            key={index}
-            bg={colorMode === "dark" ? "black" : "white"}
-            borderRadius="md"
-            textAlign="center"
-            border="1px"
-            borderColor={colorMode === "dark" ? "white" : "black"}
-            width="200px"
-            height="250px"
+  {cards.map((card, index) => (
+    <Box
+      key={index}
+      bg={colorMode === "dark" ? "black" : "white"}
+      borderRadius="md"
+      textAlign="center"
+      border="1px"
+      borderColor={colorMode === "dark" ? "white" : "black"}
+      width="200px"
+      height="250px"
+    >
+      <Box
+        padding="4"
+        borderRadius="md"
+        bg={colorMode === "dark" ? "black" : "white"}
+        height="100%"
+        display="flex"
+        flexDirection="column"
+        justifyContent="space-between"
+      >
+        <Text
+          fontFamily="'Cinzel Decorative', cursive"
+          fontSize="xl"
+          fontWeight="bold"
+          bgGradient="linear(#213147, #12AAFF, #213147)"
+          bgClip="text"
+        >
+          {card.title}
+        </Text>
+        <Text fontSize="sm" marginTop="2" color={colorMode === "dark" ? "white" : "black"}>
+          {card.content}
+        </Text>
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          bgGradient="linear(#213147, #12AAFF, #213147)"
+          borderRadius="lg"
+          padding="1px"
+          width="auto"
+          height="auto"
+          marginTop="4"
+          marginLeft="auto"
+          marginRight="auto"
+        >
+          <ChakraButton
+            size="lg"
+            height="48px"
+            width="150px"
+            border="0px"
+            borderColor="white"
+            borderRadius="lg"
+            backgroundColor={colorMode === "dark" ? "black" : "white"}
+            color={colorMode === "dark" ? "white" : "black"}
+            onClick={() => window.open("https://example.com/dashboard")}
           >
-            <Box
-              padding="4"
-              borderRadius="md"
-              bg={colorMode === "dark" ? "black" : "white"}
-              height="100%"
-              display="flex"
-              flexDirection="column"
-              justifyContent="space-between"
-            >
-              <Text
-                fontFamily="'Cinzel Decorative', cursive"
-                fontSize="xl"
-                fontWeight="bold"
-                color={colorMode === "dark" ? "white" : "black"}
-              >
-                {card.title}
-              </Text>
-              <Text fontSize="sm" marginTop="2" color={colorMode === "dark" ? "white" : "black"}>
-                {card.content}
-              </Text>
-              <a href="#" style={{ marginTop: "4" }}>
-                <ChakraButton size="sm" colorScheme="purple">
-                  Enter Dashboard
-                </ChakraButton>
-              </a>
-            </Box>
-          </Box>
-        ))}
-      </SimpleGrid>
+            Enter
+          </ChakraButton>
+        </Box>
+      </Box>
+    </Box>
+  ))}
+</SimpleGrid>
+
       </Flex>
     </main>
   );
