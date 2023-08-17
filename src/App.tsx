@@ -94,13 +94,13 @@ function Content() {
 
 const cards = [
   { title: "DAO", icon: <GiCastle size={50} color={colorMode === "dark" ? "white" : "black"} /> },
-  { title: "Ref Team", icon: <GiWhistle size={50} color={colorMode === "dark" ? "white" : "black"} /> },
-  { title: "GS1-Anchors", icon: <GiAnchor size={50} color={colorMode === "dark" ? "white" : "black"} /> },
-  { title: "GS2-Props", icon: <GiBoatPropeller size={50} color={colorMode === "dark" ? "white" : "black"} /> },
-  { title: "GS3-Schooners", icon: <GiShoonerSailboat size={50} color={colorMode === "dark" ? "white" : "black"} /> },
-  { title: "GS4-Yachty's", icon: <GiBoatHorizon size={50} color={colorMode === "dark" ? "white" : "black"} /> },
-  { title: "GS5-Navigators", icon: <GiShipWheel size={50} color={colorMode === "dark" ? "white" : "black"} /> },
-  { title: "GS6-Whales", icon: <GiWhaleTail size={50} color={colorMode === "dark" ? "white" : "black"} /> },
+  { title: "Referees", icon: <GiWhistle size={50} color={colorMode === "dark" ? "white" : "black"} /> },
+  { title: "Anchors", icon: <GiAnchor size={50} color={colorMode === "dark" ? "white" : "black"} /> },
+  { title: "Props", icon: <GiBoatPropeller size={50} color={colorMode === "dark" ? "white" : "black"} /> },
+  { title: "Schooners", icon: <GiShoonerSailboat size={50} color={colorMode === "dark" ? "white" : "black"} /> },
+  { title: "Yachty's", icon: <GiBoatHorizon size={50} color={colorMode === "dark" ? "white" : "black"} /> },
+  { title: "Navigators", icon: <GiShipWheel size={50} color={colorMode === "dark" ? "white" : "black"} /> },
+  { title: "Whales", icon: <GiWhaleTail size={50} color={colorMode === "dark" ? "white" : "black"} /> },
 ];
 
 
